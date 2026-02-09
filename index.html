@@ -4,56 +4,230 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asthre's Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; padding: 50px; background-color: #f8f9fa; color: #333; }
-        .container { max-width: 800px; margin: auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        img { width: 150px; border-radius: 50%; border: 4px solid #007bff; margin-bottom: 20px; }
-        h1 { margin-bottom: 10px; color: #2c3e50; }
-        p { color: #666; font-size: 1.1em; }
-        a { text-decoration: none; color: #007bff; font-weight: bold; transition: color 0.3s; }
-        a:hover { color: #0056b3; }
-        .project { border: 1px solid #e9ecef; padding: 25px; margin: 25px 0; border-radius: 8px; text-align: left; background-color: #fff; transition: transform 0.2s; }
-        .project:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .btn { display: inline-block; background: #007bff; color: white; padding: 8px 15px; border-radius: 5px; margin-right: 10px; font-size: 0.9em; }
-        .btn:hover { background: #0056b3; color: white; }
-        .btn-outline { background: transparent; border: 1px solid #007bff; color: #007bff; }
-        .btn-outline:hover { background: #007bff; color: white; }
+        /* Reset and Base Styles */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* Modern gradient background */
+            color: #333;
+            line-height: 1.6;
+        }
+        a { text-decoration: none; transition: all 0.3s ease; }
+        
+        /* Main Container */
+        .container {
+            max-width: 850px;
+            margin: auto;
+            background: #ffffff;
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Softer, deeper shadow */
+        }
+        
+        /* Header Section */
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid #007bff;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+        }
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-size: 2.5em;
+        }
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #007bff;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+        h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+        .intro-text {
+            color: #555;
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+        
+        /* Divider */
+        hr { border: 0; border-top: 2px solid #f0f2f5; margin: 40px 0; }
+        
+        /* Project Cards */
+        .project {
+            border: 1px solid #eef2f7;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 12px;
+            text-align: left;
+            background-color: #fff;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.1);
+            border-color: #dce4ec;
+        }
+        .project-description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .wip-tag {
+            display: inline-block;
+            background-color: #fff3cd;
+            color: #856404;
+            font-size: 0.85em;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        
+        /* Tech Stack Badges */
+        .tech-stack {
+            margin-bottom: 20px;
+        }
+        .badge {
+            display: inline-block;
+            background: #e9ecef;
+            color: #495057;
+            font-size: 0.8em;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        /* Buttons */
+        .btn-container { margin-top: 20px; }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            margin-right: 15px;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: linear-gradient(135deg, #0056b3, #004494);
+            box-shadow: 0 6px 10px rgba(0, 123, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #007bff;
+            color: #007bff;
+            padding: 8px 18px;
+            box-shadow: none;
+        }
+        .btn-outline:hover {
+            background: #007bff;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
+        }
+        .btn-disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            box-shadow: none;
+            background: #bdc3c7; /* A neutral gray */
+        }
+        .btn-disabled:hover {
+            background: #bdc3c7;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Footer Links */
+        .footer-links {
+            font-size: 1.1em;
+        }
+        .footer-links a {
+            color: #007bff;
+            font-weight: 600;
+            margin: 0 10px;
+        }
+        .footer-links a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="https://github.com/asthre.png" alt="Profile Photo">
+        <img src="https://github.com/asthre.png" alt="Profile Photo" class="profile-img">
         
         <h1>Hi, I'm Kevin! 👋</h1>
-        <p>Aspiring Data Scientist & Python Developer from the Philippines 🇵🇭</p>
+        <p class="intro-text">Aspiring Data Scientist & Python Developer from the Philippines 🇵🇭</p>
         
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
+        <hr>
         
         <h2>🚀 Featured Projects</h2>
         
         <div class="project">
-            <h3>🚗 PH Used Car Price Predictor</h3>
-            <p>A Machine Learning web app that helps Filipinos find the fair market value of used cars (Vios, Wigo, Innova) to avoid overpaying.</p>
-            <p style="margin-top: 15px;">
-                <a href="#" class="btn">🔴 Live Demo</a> 
+            <h3>
+                🚗 PH Used Car Price Predictor
+                <span class="wip-tag">🚧 Work in Progress</span>
+            </h3>
+            <p class="project-description">A Machine Learning web app that helps Filipinos find the fair market value of used cars (Vios, Wigo, Innova) to avoid overpaying.</p>
+            
+            <div class="tech-stack">
+                <span class="badge">Python</span>
+                <span class="badge">Scikit-learn</span>
+                <span class="badge">Pandas</span>
+                <span class="badge">Streamlit</span>
+            </div>
+
+            <div class="btn-container">
+                <span class="btn btn-disabled">🔴 Demo Coming Soon</span> 
                 <a href="https://github.com/asthre/used-car-price-predictor" class="btn btn-outline" target="_blank">💻 View Code</a>
-            </p>
+            </div>
         </div>
 
         <div class="project">
             <h3>⚱️ Jar of Fate (Cross-Platform)</h3>
-            <p>A decision-making app built to demonstrate <strong>feature parity</strong>. I implemented the exact same logic and UI patterns in both <strong>Flutter (Mobile)</strong> and <strong>Python (Web)</strong>.</p>
-            <p style="margin-top: 15px;">
+            <p class="project-description">A decision-making app built to demonstrate **feature parity**. I implemented the exact same logic and UI patterns in both **Flutter (Mobile)** and **Python (Web)**.</p>
+            
+            <div class="tech-stack">
+                <span class="badge">Flutter</span>
+                <span class="badge">Dart</span>
+                <span class="badge">Python</span>
+                <span class="badge">Streamlit</span>
+            </div>
+
+            <div class="btn-container">
                 <a href="https://jar-of-fate-hco4o5k2gqitzfgkyc7v7f.streamlit.app/" class="btn" target="_blank">🔴 Live Demo</a> 
                 <a href="https://github.com/asthre/jar-of-fate" class="btn btn-outline" target="_blank">💻 View Code</a>
-            </p>
+            </div>
         </div>
 
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
+        <hr>
 
         <h2>📫 Connect With Me</h2>
-        <p>
-            <a href="https://github.com/asthre">GitHub</a> &bull; 
+        <p class="footer-links">
+            <a href="https://github.com/asthre" target="_blank">GitHub</a> • 
             <a href="mailto:kevinjlamis@gmail.com">Email</a>
         </p>
     </div>
