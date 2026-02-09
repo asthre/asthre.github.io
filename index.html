@@ -6,133 +6,157 @@
     <title>Asthre's Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* Reset and Base Styles */
+        /* --- RESET & BASE STYLES --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
             font-family: 'Open Sans', sans-serif;
             text-align: center;
-            padding: 40px 20px;
+            padding: 20px; /* Reduced padding for mobile */
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             color: #333;
             line-height: 1.6;
+            min-height: 100vh;
         }
+
         a { text-decoration: none; transition: all 0.3s ease; }
         
-        /* Main Container */
+        /* --- MAIN CONTAINER --- */
         .container {
-            max-width: 850px;
+            width: 100%;
+            max-width: 1000px; /* Wider max-width for landscape */
             margin: auto;
             background: #ffffff;
-            padding: 50px;
+            padding: 40px 20px;
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         
-        /* Header Section */
+        /* --- HEADER PROFILE --- */
         .profile-img {
-            width: 160px;
-            height: 160px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             border: 4px solid #007bff;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+            object-fit: cover;
         }
+        
         h1 {
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
             margin-bottom: 10px;
             color: #2c3e50;
-            font-size: 2.5em;
+            font-size: 2em; /* Slightly smaller for mobile safety */
         }
+        
         h2 {
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
             color: #007bff;
             margin-bottom: 25px;
-            font-size: 1.8em;
+            font-size: 1.5em;
         }
-        h3 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1.4em;
-            margin-bottom: 10px;
-            color: #34495e;
-        }
+
         .intro-text {
             color: #555;
-            font-size: 1.2em;
+            font-size: 1.1em;
             max-width: 600px;
             margin: 0 auto 30px auto;
         }
         
-        /* Divider */
         hr { border: 0; border-top: 2px solid #f0f2f5; margin: 40px 0; }
         
-        /* Project Cards */
+        /* --- PROJECT GRID SYSTEM --- */
+        /* This wrapper controls the layout */
+        .projects-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* --- PROJECT CARD STYLES --- */
         .project {
             border: 1px solid #eef2f7;
-            padding: 30px;
-            margin: 30px 0;
+            padding: 25px;
             border-radius: 12px;
             text-align: left;
             background-color: #fff;
             transition: all 0.3s ease;
             box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            
+            /* These lines ensure cards are same height in grid mode */
+            display: flex;
+            flex-direction: column; 
+            justify-content: space-between;
         }
+
         .project:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0, 123, 255, 0.1);
             border-color: #dce4ec;
         }
+        
+        h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #34495e;
+            line-height: 1.4;
+        }
+
         .project-description {
             color: #666;
             margin-bottom: 20px;
+            flex-grow: 1; /* Pushes buttons to bottom */
         }
+        
+        /* --- TAGS & BADGES --- */
         .wip-tag {
             display: inline-block;
             background-color: #fff3cd;
             color: #856404;
-            font-size: 0.85em;
+            font-size: 0.75em;
             font-weight: 600;
-            padding: 4px 10px;
+            padding: 3px 8px;
             border-radius: 20px;
-            margin-left: 10px;
+            margin-left: 8px;
             vertical-align: middle;
+            white-space: nowrap; /* Prevents tag breaking */
         }
         
-        /* Tech Stack Badges */
-        .tech-stack {
-            margin-bottom: 20px;
-        }
+        .tech-stack { margin-bottom: 20px; }
         .badge {
             display: inline-block;
             background: #e9ecef;
             color: #495057;
-            font-size: 0.8em;
+            font-size: 0.75em;
             font-weight: 600;
-            padding: 5px 12px;
+            padding: 5px 10px;
             border-radius: 20px;
-            margin-right: 8px;
-            margin-bottom: 8px;
+            margin-right: 5px;
+            margin-bottom: 5px;
         }
         
-        /* Buttons */
-        .btn-container { margin-top: 20px; }
+        /* --- BUTTONS --- */
+        .btn-container { margin-top: auto; }
         .btn {
             display: inline-block;
             background: linear-gradient(135deg, #007bff, #0056b3);
             color: white;
             padding: 10px 20px;
             border-radius: 30px;
-            margin-right: 15px;
+            margin-right: 10px;
+            margin-bottom: 10px; /* For stacking on small screens */
             font-weight: 600;
-            box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
+            font-size: 0.9em;
             border: none;
             cursor: pointer;
         }
         .btn:hover {
             background: linear-gradient(135deg, #0056b3, #004494);
-            box-shadow: 0 6px 10px rgba(0, 123, 255, 0.3);
             transform: translateY(-2px);
         }
         .btn-outline {
@@ -140,38 +164,35 @@
             border: 2px solid #007bff;
             color: #007bff;
             padding: 8px 18px;
-            box-shadow: none;
         }
         .btn-outline:hover {
             background: #007bff;
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
         }
         .btn-disabled {
             background: #bdc3c7;
             cursor: not-allowed;
-            box-shadow: none;
-        }
-        .btn-disabled:hover {
-            background: #bdc3c7;
-            transform: none;
-            box-shadow: none;
+            pointer-events: none; /* Prevents clicking */
         }
 
-        /* Footer Links */
-        .footer-links {
-            font-size: 1.1em;
+        /* --- MEDIA QUERIES (The Magic Part) --- */
+        
+        /* For Tablets and Desktops (Landscape) */
+        @media (min-width: 768px) {
+            .projects-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr; /* Two equal columns */
+                gap: 30px;
+            }
+            
+            .container { padding: 50px; }
+            h1 { font-size: 2.5em; }
         }
-        .footer-links a {
-            color: #007bff;
-            font-weight: 600;
-            margin: 0 10px;
-        }
-        .footer-links a:hover {
-            color: #0056b3;
-            text-decoration: underline;
-        }
+
+        /* --- FOOTER --- */
+        .footer-links { font-size: 1.1em; }
+        .footer-links a { color: #007bff; font-weight: 600; margin: 0 10px; }
     </style>
 </head>
 <body>
@@ -185,44 +206,46 @@
         
         <h2>🚀 Featured Projects</h2>
         
-        <div class="project">
-            <h3>
-                🚗 PH Used Car Price Predictor
-                <span class="wip-tag">🚧 Work in Progress</span>
-            </h3>
-            <p class="project-description">A Machine Learning web app that helps Filipinos find the fair market value of used cars (Vios, Wigo, Innova) to avoid overpaying.</p>
+        <div class="projects-grid">
             
-            <div class="tech-stack">
-                <span class="badge">Python</span>
-                <span class="badge">Scikit-learn</span>
-                <span class="badge">Pandas</span>
-                <span class="badge">Streamlit</span>
+            <div class="project">
+                <h3>
+                    🚗 PH Used Car Price Predictor
+                    <span class="wip-tag">🚧 Work in Progress</span>
+                </h3>
+                <p class="project-description">A Machine Learning web app that helps Filipinos find the fair market value of used cars (Vios, Wigo, Innova) to avoid overpaying.</p>
+                
+                <div class="tech-stack">
+                    <span class="badge">Python</span>
+                    <span class="badge">Scikit-learn</span>
+                    <span class="badge">Pandas</span>
+                    <span class="badge">Streamlit</span>
+                </div>
+
+                <div class="btn-container">
+                    <span class="btn btn-disabled">🔴 Demo Soon</span> 
+                    <a href="https://github.com/asthre/used-car-price-predictor" class="btn btn-outline" target="_blank">💻 View Code</a>
+                </div>
             </div>
 
-            <div class="btn-container">
-                <span class="btn btn-disabled">🔴 Demo Coming Soon</span> 
-                <a href="https://github.com/asthre/used-car-price-predictor" class="btn btn-outline" target="_blank">💻 View Code</a>
-            </div>
-        </div>
+            <div class="project">
+                <h3>⚱️ Jar of Fate (Cross-Platform)</h3>
+                <p class="project-description">A decision-making app built to demonstrate <strong>feature parity</strong>. I implemented the exact same logic and UI patterns in both <strong>Flutter</strong> and <strong>Python</strong>.</p>
+                
+                <div class="tech-stack">
+                    <span class="badge">Flutter</span>
+                    <span class="badge">Dart</span>
+                    <span class="badge">Python</span>
+                    <span class="badge">Streamlit</span>
+                </div>
 
-        <div class="project">
-            <h3>⚱️ Jar of Fate (Cross-Platform)</h3>
-            <p class="project-description">A decision-making app built to demonstrate <strong>feature parity</strong>. I implemented the exact same logic and UI patterns in both <strong>Flutter (Mobile)</strong> and <strong>Python (Web)</strong>.</p>
-            
-            <div class="tech-stack">
-                <span class="badge">Flutter</span>
-                <span class="badge">Dart</span>
-                <span class="badge">Python</span>
-                <span class="badge">Streamlit</span>
+                <div class="btn-container">
+                    <a href="https://jar-of-fate-hco4o5k2gqitzfgkyc7v7f.streamlit.app/" class="btn" target="_blank">🔴 Live Demo</a> 
+                    <a href="https://github.com/asthre/jar-of-fate" class="btn btn-outline" target="_blank">💻 View Code</a>
+                </div>
             </div>
 
-            <div class="btn-container">
-                <a href="https://jar-of-fate-hco4o5k2gqitzfgkyc7v7f.streamlit.app/" class="btn" target="_blank">🔴 Live Demo</a> 
-                <a href="https://github.com/asthre/jar-of-fate" class="btn btn-outline" target="_blank">💻 View Code</a>
-            </div>
-        </div>
-
-        <hr>
+        </div> <hr>
 
         <h2>📫 Connect With Me</h2>
         <p class="footer-links">
