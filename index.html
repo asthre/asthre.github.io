@@ -126,6 +126,20 @@
             vertical-align: middle;
             white-space: nowrap; /* Prevents tag breaking */
         }
+
+        /* NEW: Added a Green tag for completed projects */
+        .completed-tag {
+            display: inline-block;
+            background-color: #d4edda;
+            color: #155724;
+            font-size: 0.75em;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 20px;
+            margin-left: 8px;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
         
         .tech-stack { margin-bottom: 20px; }
         .badge {
@@ -208,6 +222,25 @@
         
         <div class="projects-grid">
             
+            <div class="project">
+                <h3>
+                    👥 Employee Payroll System
+                    <span class="completed-tag">✅ Completed</span>
+                </h3>
+                <p class="project-description">A secure web application for managing employee records and processing payroll. Features role-based authentication, dynamic search, and automated CSV reporting.</p>
+                
+                <div class="tech-stack">
+                    <span class="badge">Core PHP</span>
+                    <span class="badge">MySQL</span>
+                    <span class="badge">JavaScript</span>
+                    <span class="badge">CSS3</span>
+                </div>
+
+                <div class="btn-container">
+                    <a href="https://github.com/asthre/payroll-management-system" class="btn" target="_blank">💻 View Code</a>
+                </div>
+            </div>
+
             <div class="project">
                 <h3>
                     🚗 PH Used Car Price Predictor
