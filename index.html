@@ -3,255 +3,388 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asthre's Portfolio</title>
+    <title>Kevin Lamis | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* --- RESET & BASE STYLES --- */
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --primary: #007bff;
+            --primary-dark: #0056b3;
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --text-dark: #2c3e50;
+            --text-light: #555;
+            --card-bg: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        
+
         body {
             font-family: 'Open Sans', sans-serif;
-            text-align: center;
-            padding: 20px; /* Reduced padding for mobile */
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            color: #333;
+            background: var(--bg-gradient);
+            color: var(--text-dark);
             line-height: 1.6;
             min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
 
-        a { text-decoration: none; transition: all 0.3s ease; }
-        
-        /* --- MAIN CONTAINER --- */
-        .container {
-            width: 100%;
-            max-width: 1000px; /* Wider max-width for landscape */
-            margin: auto;
-            background: #ffffff;
-            padding: 40px 20px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        
-        /* --- HEADER PROFILE --- */
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 4px solid #007bff;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
-            object-fit: cover;
-        }
-        
-        h1 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #2c3e50;
-            font-size: 2em; /* Slightly smaller for mobile safety */
-        }
-        
-        h2 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            color: #007bff;
-            margin-bottom: 25px;
-            font-size: 1.5em;
-        }
-
-        .intro-text {
-            color: #555;
-            font-size: 1.1em;
-            max-width: 600px;
-            margin: 0 auto 30px auto;
-        }
-        
-        hr { border: 0; border-top: 2px solid #f0f2f5; margin: 40px 0; }
-        
-        /* --- PROJECT GRID SYSTEM --- */
-        /* This wrapper controls the layout */
-        .projects-grid {
+        /* --- MAIN LAYOUT GRID --- */
+        .main-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            width: 100%;
+            max-width: 1100px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            animation: fadeIn 1s ease-out;
         }
 
-        /* --- PROJECT CARD STYLES --- */
-        .project {
-            border: 1px solid #eef2f7;
-            padding: 25px;
-            border-radius: 12px;
-            text-align: left;
-            background-color: #fff;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-            
-            /* These lines ensure cards are same height in grid mode */
-            display: flex;
-            flex-direction: column; 
-            justify-content: space-between;
+        /* --- LEFT SIDE (PROFILE) --- */
+        .profile-section {
+            background: #fff;
+            padding: 40px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            z-index: 10;
         }
 
-        .project:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.1);
-            border-color: #dce4ec;
-        }
-        
-        h3 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1.3em;
-            margin-bottom: 10px;
-            color: #34495e;
-            line-height: 1.4;
-        }
-
-        .project-description {
-            color: #666;
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            padding: 4px;
+            background: white;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
             margin-bottom: 20px;
-            flex-grow: 1; /* Pushes buttons to bottom */
+            transition: var(--transition);
         }
-        
-        /* --- TAGS & BADGES --- */
-        .wip-tag {
-            display: inline-block;
-            background-color: #fff3cd;
-            color: #856404;
-            font-size: 0.75em;
-            font-weight: 600;
-            padding: 3px 8px;
-            border-radius: 20px;
-            margin-left: 8px;
-            vertical-align: middle;
-            white-space: nowrap; /* Prevents tag breaking */
+
+        .profile-img:hover {
+            transform: scale(1.05) rotate(2deg);
         }
-        
-        .tech-stack { margin-bottom: 20px; }
-        .badge {
-            display: inline-block;
-            background: #e9ecef;
-            color: #495057;
-            font-size: 0.75em;
-            font-weight: 600;
-            padding: 5px 10px;
-            border-radius: 20px;
-            margin-right: 5px;
+
+        .profile-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2em;
+            font-weight: 700;
             margin-bottom: 5px;
+            color: var(--text-dark);
         }
-        
-        /* --- BUTTONS --- */
-        .btn-container { margin-top: auto; }
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            margin-right: 10px;
-            margin-bottom: 10px; /* For stacking on small screens */
+
+        .profile-role {
+            font-size: 1.1em;
+            color: var(--primary);
             font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .profile-bio {
+            color: var(--text-light);
+            font-size: 0.95em;
+            margin-bottom: 25px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-links a {
+            color: var(--text-dark);
+            font-size: 1.5em;
+            margin: 0 10px;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* --- RIGHT SIDE (PROJECTS) --- */
+        .content-section {
+            padding: 40px;
+            background: #fafafa;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 3px;
+            background: var(--primary);
+            margin-top: 5px;
+            border-radius: 2px;
+        }
+
+        /* --- PROJECT CARDS --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .project-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid #f0f0f0;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            top: 0;
+        }
+
+        .project-card:hover {
+            top: -5px;
+            box-shadow: 0 15px 30px rgba(0, 123, 255, 0.15);
+            border-color: #e0e0e0;
+        }
+
+        .project-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.25em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-desc {
             font-size: 0.9em;
-            border: none;
-            cursor: pointer;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            flex-grow: 1;
         }
-        .btn:hover {
-            background: linear-gradient(135deg, #0056b3, #004494);
+
+        /* --- TAGS & BADGES --- */
+        .status-badge {
+            font-size: 0.7em;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-completed { background: #d4edda; color: #155724; }
+        .status-wip { background: #fff3cd; color: #856404; }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tech-pill {
+            font-size: 0.75em;
+            background: #eff2f5;
+            color: #555;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        /* --- BUTTONS --- */
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
             transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
         }
+
         .btn-outline {
+            border: 1px solid var(--primary);
+            color: var(--primary);
             background: transparent;
-            border: 2px solid #007bff;
-            color: #007bff;
-            padding: 8px 18px;
         }
+
         .btn-outline:hover {
-            background: #007bff;
+            background: var(--primary);
             color: white;
             transform: translateY(-2px);
         }
+
         .btn-disabled {
-            background: #bdc3c7;
+            background: #e0e0e0;
+            color: #999;
             cursor: not-allowed;
-            pointer-events: none; /* Prevents clicking */
+            pointer-events: none;
         }
 
-        /* --- MEDIA QUERIES (The Magic Part) --- */
-        
-        /* For Tablets and Desktops (Landscape) */
-        @media (min-width: 768px) {
-            .projects-grid {
-                display: grid;
-                grid-template-columns: 1fr 1fr; /* Two equal columns */
-                gap: 30px;
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- RESPONSIVE DESIGN (DESKTOP MODE) --- */
+        @media (min-width: 900px) {
+            .main-wrapper {
+                flex-direction: row;
+                height: 85vh; /* Fixed height for dashboard feel */
             }
-            
-            .container { padding: 50px; }
-            h1 { font-size: 2.5em; }
-        }
 
-        /* --- FOOTER --- */
-        .footer-links { font-size: 1.1em; }
-        .footer-links a { color: #007bff; font-weight: 600; margin: 0 10px; }
+            .profile-section {
+                width: 35%;
+                border-right: 1px solid #eee;
+                border-bottom: none;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+            }
+
+            .content-section {
+                width: 65%;
+                overflow-y: auto; /* Scrollable projects area */
+                padding: 50px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr; /* Stacked cards often look better in split view */
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="https://github.com/asthre.png" alt="Profile Photo" class="profile-img">
+
+    <div class="main-wrapper">
         
-        <h1>Hi, I'm Kevin! 👋</h1>
-        <p class="intro-text">Aspiring Data Scientist & Python Developer from the Philippines 🇵🇭</p>
-        
-        <hr>
-        
-        <h2>🚀 Featured Projects</h2>
-        
-        <div class="projects-grid">
+        <aside class="profile-section">
+            <img src="https://github.com/asthre.png" alt="Kevin Lamis" class="profile-img">
+            <h1 class="profile-name">Kevin Lamis</h1>
+            <p class="profile-role">Aspiring Data Scientist & Dev</p>
+            <p class="profile-bio">
+                Passionate about building efficient web systems and exploring data analytics. Based in the Philippines 🇵🇭
+            </p>
             
-            <div class="project">
-                <h3>
-                    🚗 PH Used Car Price Predictor
-                    <span class="wip-tag">🚧 Work in Progress</span>
-                </h3>
-                <p class="project-description">A Machine Learning web app that helps Filipinos find the fair market value of used cars (Vios, Wigo, Innova) to avoid overpaying.</p>
-                
-                <div class="tech-stack">
-                    <span class="badge">Python</span>
-                    <span class="badge">Scikit-learn</span>
-                    <span class="badge">Pandas</span>
-                    <span class="badge">Streamlit</span>
-                </div>
-
-                <div class="btn-container">
-                    <span class="btn btn-disabled">🔴 Demo Soon</span> 
-                    <a href="https://github.com/asthre/used-car-price-predictor" class="btn btn-outline" target="_blank">💻 View Code</a>
-                </div>
+            <div class="social-links">
+                <a href="https://github.com/asthre" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="mailto:kevinjlamis@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
             </div>
+        </aside>
 
-            <div class="project">
-                <h3>⚱️ Jar of Fate (Cross-Platform)</h3>
-                <p class="project-description">A decision-making app built to demonstrate <strong>feature parity</strong>. I implemented the exact same logic and UI patterns in both <strong>Flutter</strong> and <strong>Python</strong>.</p>
-                
-                <div class="tech-stack">
-                    <span class="badge">Flutter</span>
-                    <span class="badge">Dart</span>
-                    <span class="badge">Python</span>
-                    <span class="badge">Streamlit</span>
-                </div>
+        <main class="content-section">
+            <h2 class="section-title">Featured Projects</h2>
+            
+            <div class="projects-grid">
 
-                <div class="btn-container">
-                    <a href="https://jar-of-fate-hco4o5k2gqitzfgkyc7v7f.streamlit.app/" class="btn" target="_blank">🔴 Live Demo</a> 
-                    <a href="https://github.com/asthre/jar-of-fate" class="btn btn-outline" target="_blank">💻 View Code</a>
-                </div>
+                <article class="project-card">
+                    <div class="project-title">
+                        <span>👥 Employee Payroll System</span>
+                        <span class="status-badge status-completed">Completed</span>
+                    </div>
+                    <p class="project-desc">
+                        A secure web application for managing employee records, processing payroll, and generating reports. Features role-based login and CSV exports.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Core PHP</span>
+                        <span class="tech-pill">MySQL</span>
+                        <span class="tech-pill">JavaScript</span>
+                        <span class="tech-pill">Secure Auth</span>
+                    </div>
+                    <div class="btn-group">
+                        <a href="https://github.com/asthre/payroll-management-system" class="btn btn-primary" target="_blank">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-title">
+                        <span>🚗 PH Car Price Predictor</span>
+                        <span class="status-badge status-wip">In Progress</span>
+                    </div>
+                    <p class="project-desc">
+                        Machine Learning web app to help Filipinos find fair market values for used cars (Vios, Wigo, Innova) to avoid overpaying.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Python</span>
+                        <span class="tech-pill">Scikit-Learn</span>
+                        <span class="tech-pill">Pandas</span>
+                        <span class="tech-pill">Streamlit</span>
+                    </div>
+                    <div class="btn-group">
+                        <a href="https://github.com/asthre/used-car-price-predictor" class="btn btn-outline" target="_blank">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                        <span class="btn btn-disabled">Demo Soon</span>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-title">
+                        <span>⚱️ Jar of Fate</span>
+                        <span class="status-badge status-completed">Cross-Platform</span>
+                    </div>
+                    <p class="project-desc">
+                        A decision-making app built twice to demonstrate feature parity between Python (Streamlit) and Flutter (Dart).
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-pill">Flutter</span>
+                        <span class="tech-pill">Dart</span>
+                        <span class="tech-pill">Python</span>
+                    </div>
+                    <div class="btn-group">
+                        <a href="https://jar-of-fate-hco4o5k2gqitzfgkyc7v7f.streamlit.app/" class="btn btn-primary" target="_blank">
+                            <i class="fas fa-play"></i> Live Demo
+                        </a>
+                        <a href="https://github.com/asthre/jar-of-fate" class="btn btn-outline" target="_blank">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </article>
+
             </div>
-
-        </div> <hr>
-
-        <h2>📫 Connect With Me</h2>
-        <p class="footer-links">
-            <a href="https://github.com/asthre" target="_blank">GitHub</a> • 
-            <a href="mailto:kevinjlamis@gmail.com">Email</a>
-        </p>
+        </main>
     </div>
+
 </body>
 </html>
