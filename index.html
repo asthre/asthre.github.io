@@ -7,287 +7,286 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* --- RESET & VARIABLES --- */
+        /* --- VARIABLES --- */
         :root {
             --primary: #007bff;
             --primary-dark: #0056b3;
             --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             --text-dark: #2c3e50;
             --text-light: #555;
-            --card-bg: #ffffff;
-            --shadow: 0 10px 30px rgba(0,0,0,0.1);
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
+        /* --- RESET --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Open Sans', sans-serif;
-            background: var(--bg-gradient);
             color: var(--text-dark);
             line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            background: #f0f2f5;
         }
 
-        /* --- MAIN LAYOUT GRID --- */
+        /* --- MAIN LAYOUT --- */
         .main-wrapper {
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
             width: 100%;
-            max-width: 1100px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            animation: fadeIn 1s ease-out;
         }
 
         /* --- LEFT SIDE (PROFILE) --- */
         .profile-section {
             background: #fff;
-            padding: 40px;
+            padding: 60px 40px;
             text-align: center;
             border-bottom: 1px solid #eee;
-            position: relative;
+            /* Mobile defaults */
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             z-index: 10;
         }
 
         .profile-img {
-            width: 160px;
-            height: 160px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            border: 4px solid var(--primary);
-            padding: 4px;
+            border: 5px solid var(--primary);
+            padding: 5px;
             background: white;
             object-fit: cover;
-            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
-            margin-bottom: 20px;
+            box-shadow: 0 10px 25px rgba(0, 123, 255, 0.25);
+            margin-bottom: 25px;
             transition: var(--transition);
         }
 
-        .profile-img:hover {
-            transform: scale(1.05) rotate(2deg);
-        }
+        .profile-img:hover { transform: scale(1.05) rotate(2deg); }
 
         .profile-name {
             font-family: 'Poppins', sans-serif;
-            font-size: 2em;
+            font-size: 2.2em;
             font-weight: 700;
             margin-bottom: 5px;
             color: var(--text-dark);
         }
 
         .profile-role {
-            font-size: 1.1em;
+            font-size: 1.2em;
             color: var(--primary);
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .profile-bio {
             color: var(--text-light);
-            font-size: 0.95em;
-            margin-bottom: 25px;
+            font-size: 1em;
+            margin-bottom: 30px;
             max-width: 400px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .social-links a {
             color: var(--text-dark);
-            font-size: 1.5em;
-            margin: 0 10px;
+            font-size: 1.8em;
+            margin: 0 15px;
             transition: var(--transition);
         }
 
         .social-links a:hover {
             color: var(--primary);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
 
         /* --- RIGHT SIDE (PROJECTS) --- */
         .content-section {
-            padding: 40px;
-            background: #fafafa;
+            background: #f8f9fa;
+            padding: 40px 20px;
+            flex: 1;
+        }
+
+        .section-header {
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 15px;
         }
 
         .section-title {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.5em;
+            font-size: 1.8em;
             font-weight: 700;
-            margin-bottom: 30px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50%;
-            height: 3px;
-            background: var(--primary);
-            margin-top: 5px;
-            border-radius: 2px;
+            color: var(--text-dark);
         }
 
         /* --- PROJECT CARDS --- */
+        .container-width {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
         .projects-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 25px;
+            gap: 30px;
         }
 
         .project-card {
             background: #fff;
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            border: 1px solid #f0f0f0;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.05);
             transition: var(--transition);
             display: flex;
             flex-direction: column;
-            position: relative;
-            top: 0;
         }
 
         .project-card:hover {
-            top: -5px;
-            box-shadow: 0 15px 30px rgba(0, 123, 255, 0.15);
-            border-color: #e0e0e0;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 123, 255, 0.1);
         }
 
         .project-title {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.25em;
+            font-size: 1.4em;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
         .project-desc {
-            font-size: 0.9em;
+            font-size: 1em;
             color: var(--text-light);
-            margin-bottom: 20px;
-            flex-grow: 1;
+            margin-bottom: 25px;
         }
 
-        /* --- TAGS & BADGES --- */
+        /* --- BADGES --- */
         .status-badge {
-            font-size: 0.7em;
-            padding: 4px 8px;
-            border-radius: 12px;
+            font-size: 0.6em;
+            padding: 5px 10px;
+            border-radius: 20px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            vertical-align: middle;
         }
-
         .status-completed { background: #d4edda; color: #155724; }
         .status-wip { background: #fff3cd; color: #856404; }
 
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; }
         .tech-pill {
-            font-size: 0.75em;
-            background: #eff2f5;
-            color: #555;
-            padding: 5px 10px;
-            border-radius: 6px;
+            font-size: 0.8em;
+            background: #f1f3f5;
+            color: #495057;
+            padding: 6px 12px;
+            border-radius: 8px;
             font-weight: 600;
         }
 
         /* --- BUTTONS --- */
-        .btn-group {
-            display: flex;
-            gap: 10px;
-            margin-top: auto;
-        }
-
+        .btn-group { display: flex; gap: 12px; margin-top: auto; }
         .btn {
             text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 0.85em;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.9em;
             font-weight: 600;
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+        }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+        .btn-outline { border: 2px solid var(--primary); color: var(--primary); background: transparent; }
+        .btn-outline:hover { background: var(--primary); color: white; transform: translateY(-2px); }
+        .btn-disabled { background: #e9ecef; color: #adb5bd; cursor: not-allowed; }
+
+        /* --- DROPDOWN (DETAILS/SUMMARY) --- */
+        .wip-dropdown {
+            margin-top: 50px;
+            border-top: 2px dashed #e0e0e0;
+            padding-top: 30px;
         }
 
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
+        .wip-dropdown summary {
+            list-style: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #6c757d;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s;
+            outline: none;
         }
 
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+        .wip-dropdown summary::-webkit-details-marker { display: none; }
+        
+        .wip-dropdown summary:hover { color: var(--primary); }
+        
+        .wip-dropdown summary::after {
+            content: '\f078'; /* FontAwesome Chevron Down */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            margin-left: auto;
+            transition: transform 0.3s;
         }
 
-        .btn-outline {
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            background: transparent;
+        .wip-dropdown[open] summary::after { transform: rotate(180deg); }
+
+        .wip-content {
+            margin-top: 25px;
+            animation: slideDown 0.3s ease-out;
         }
 
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .btn-disabled {
-            background: #e0e0e0;
-            color: #999;
-            cursor: not-allowed;
-            pointer-events: none;
-        }
-
-        /* --- ANIMATIONS --- */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- RESPONSIVE DESIGN (DESKTOP MODE) --- */
+        /* --- MEDIA QUERIES --- */
+        
+        /* DESKTOP (LANDSCAPE) - FULL SCREEN SPLIT */
         @media (min-width: 900px) {
+            body {
+                overflow: hidden; /* Lock scroll on body */
+            }
+
             .main-wrapper {
                 flex-direction: row;
-                height: 85vh; /* Fixed height for dashboard feel */
+                height: 100vh;
             }
 
             .profile-section {
-                width: 35%;
-                border-right: 1px solid #eee;
+                width: 35%; /* Fixed width for profile */
+                min-width: 350px;
+                max-width: 450px;
+                height: 100vh;
+                border-right: 1px solid #e0e0e0;
                 border-bottom: none;
-                display: flex;
-                flex-direction: column;
                 justify-content: center;
-                align-items: center;
-                background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
             }
 
             .content-section {
                 width: 65%;
-                overflow-y: auto; /* Scrollable projects area */
-                padding: 50px;
+                flex: 1;
+                height: 100vh;
+                overflow-y: auto; /* Scroll ONLY the projects side */
+                padding: 60px;
             }
 
-            .projects-grid {
-                grid-template-columns: 1fr; /* Stacked cards often look better in split view */
+            .container-width {
+                max-width: 900px; /* Wider content on desktop */
+                margin: 0 auto;
             }
         }
     </style>
@@ -301,7 +300,7 @@
             <h1 class="profile-name">Kevin Lamis</h1>
             <p class="profile-role">Aspiring Data Scientist & Dev</p>
             <p class="profile-bio">
-                Passionate about building efficient web systems and exploring data analytics. Based in the Philippines 🇵🇭
+                Building efficient systems and analyzing data. <br> Based in the Philippines 🇵🇭
             </p>
             
             <div class="social-links">
@@ -312,77 +311,92 @@
         </aside>
 
         <main class="content-section">
-            <h2 class="section-title">Featured Projects</h2>
-            
-            <div class="projects-grid">
+            <div class="container-width">
+                
+                <div class="section-header">
+                    <h2 class="section-title">🚀 Featured Projects</h2>
+                </div>
+                
+                <div class="projects-grid">
 
-                <article class="project-card">
-                    <div class="project-title">
-                        <span>👥 Employee Payroll System</span>
-                        <span class="status-badge status-completed">Completed</span>
-                    </div>
-                    <p class="project-desc">
-                        A secure web application for managing employee records, processing payroll, and generating reports. Features role-based login and CSV exports.
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-pill">Core PHP</span>
-                        <span class="tech-pill">MySQL</span>
-                        <span class="tech-pill">JavaScript</span>
-                        <span class="tech-pill">Secure Auth</span>
-                    </div>
-                    <div class="btn-group">
-                        <a href="https://github.com/asthre/payroll-management-system" class="btn btn-primary" target="_blank">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
-                    </div>
-                </article>
+                    <article class="project-card">
+                        <div class="project-title">
+                            <span>👥 Employee Payroll System</span>
+                            <span class="status-badge status-completed">Completed</span>
+                        </div>
+                        <p class="project-desc">
+                            A secure, role-based web application for managing employee records. Features include dynamic search, salary computation, and automated CSV reporting.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Core PHP</span>
+                            <span class="tech-pill">MySQL</span>
+                            <span class="tech-pill">JavaScript</span>
+                            <span class="tech-pill">Security</span>
+                        </div>
+                        <div class="btn-group">
+                            <a href="https://github.com/asthre/payroll-management-system" class="btn btn-primary" target="_blank">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                        </div>
+                    </article>
 
-                <article class="project-card">
-                    <div class="project-title">
-                        <span>🚗 PH Car Price Predictor</span>
-                        <span class="status-badge status-wip">In Progress</span>
-                    </div>
-                    <p class="project-desc">
-                        Machine Learning web app to help Filipinos find fair market values for used cars (Vios, Wigo, Innova) to avoid overpaying.
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-pill">Python</span>
-                        <span class="tech-pill">Scikit-Learn</span>
-                        <span class="tech-pill">Pandas</span>
-                        <span class="tech-pill">Streamlit</span>
-                    </div>
-                    <div class="btn-group">
-                        <a href="https://github.com/asthre/used-car-price-predictor" class="btn btn-outline" target="_blank">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
-                        <span class="btn btn-disabled">Demo Soon</span>
-                    </div>
-                </article>
+                    <article class="project-card">
+                        <div class="project-title">
+                            <span>⚱️ Jar of Fate</span>
+                            <span class="status-badge status-completed">Cross-Platform</span>
+                        </div>
+                        <p class="project-desc">
+                            A decision-making app built twice to demonstrate feature parity. Implemented the exact same logic and UI patterns in both Python and Flutter.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Flutter</span>
+                            <span class="tech-pill">Dart</span>
+                            <span class="tech-pill">Python</span>
+                        </div>
+                        <div class="btn-group">
+                            <a href="https://jar-of-fate-hco4o5k2gqitzfgkyc7v7f.streamlit.app/" class="btn btn-primary" target="_blank">
+                                <i class="fas fa-play"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/asthre/jar-of-fate" class="btn btn-outline" target="_blank">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </article>
 
-                <article class="project-card">
-                    <div class="project-title">
-                        <span>⚱️ Jar of Fate</span>
-                        <span class="status-badge status-completed">Cross-Platform</span>
-                    </div>
-                    <p class="project-desc">
-                        A decision-making app built twice to demonstrate feature parity between Python (Streamlit) and Flutter (Dart).
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-pill">Flutter</span>
-                        <span class="tech-pill">Dart</span>
-                        <span class="tech-pill">Python</span>
-                    </div>
-                    <div class="btn-group">
-                        <a href="https://jar-of-fate-hco4o5k2gqitzfgkyc7v7f.streamlit.app/" class="btn btn-primary" target="_blank">
-                            <i class="fas fa-play"></i> Live Demo
-                        </a>
-                        <a href="https://github.com/asthre/jar-of-fate" class="btn btn-outline" target="_blank">
-                            <i class="fab fa-github"></i> Code
-                        </a>
-                    </div>
-                </article>
+                </div>
 
-            </div>
+                <details class="wip-dropdown">
+                    <summary>
+                        <span>🚧 Work In Progress / Unfinished</span>
+                    </summary>
+                    
+                    <div class="wip-content projects-grid">
+                        
+                        <article class="project-card" style="border-left: 4px solid #f0ad4e;">
+                            <div class="project-title">
+                                <span>🚗 PH Car Price Predictor</span>
+                                <span class="status-badge status-wip">In Progress</span>
+                            </div>
+                            <p class="project-desc">
+                                Machine Learning web app to help Filipinos find fair market values for used cars (Vios, Wigo, Innova) to avoid overpaying.
+                            </p>
+                            <div class="tech-stack">
+                                <span class="tech-pill">Python</span>
+                                <span class="tech-pill">Scikit-Learn</span>
+                                <span class="tech-pill">Pandas</span>
+                            </div>
+                            <div class="btn-group">
+                                <a href="https://github.com/asthre/used-car-price-predictor" class="btn btn-outline" target="_blank">
+                                    <i class="fab fa-github"></i> View Repo
+                                </a>
+                                <span class="btn btn-disabled">Demo Soon</span>
+                            </div>
+                        </article>
+
+                    </div>
+                </details>
+
+                <br><br> </div>
         </main>
     </div>
 
